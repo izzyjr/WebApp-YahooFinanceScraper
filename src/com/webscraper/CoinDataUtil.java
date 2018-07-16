@@ -22,7 +22,7 @@ public class CoinDataUtil {
 
         //Symbol
 
-        String xpathSymbol = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[1]";
+        String xpathSymbol = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[1]";
         
         List<WebElement> symbol = new ArrayList<WebElement>();
 
@@ -30,7 +30,7 @@ public class CoinDataUtil {
 
         //Name
 
-        String xpathName = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[2]";
+        String xpathName = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[2]";
         
         List<WebElement> name = new ArrayList<WebElement>();
 
@@ -38,7 +38,7 @@ public class CoinDataUtil {
 
         //Price
 
-        String xpathPrice = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[3]";
+        String xpathPrice = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[3]";
         
         List<WebElement> price = new ArrayList<WebElement>();
 
@@ -46,7 +46,7 @@ public class CoinDataUtil {
 
         //Percent Change
 
-        String xpathPercentChange = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[5]";
+        String xpathPercentChange = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[5]";
         
         List<WebElement> percentChange = new ArrayList<WebElement>();
 
@@ -54,7 +54,7 @@ public class CoinDataUtil {
 
         //Market Cap
 
-        String xpathMarketCap = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[6]";
+        String xpathMarketCap = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[6]";
         
         List<WebElement> marketCap = new ArrayList<WebElement>();
 
@@ -62,7 +62,7 @@ public class CoinDataUtil {
 
         //Volume in Currency(24hr)
 
-        String xpathVolumeCurrency = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[8]";
+        String xpathVolumeCurrency = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[8]";
         
         List<WebElement> volumeCurrency = new ArrayList<WebElement>();
 
@@ -70,7 +70,7 @@ public class CoinDataUtil {
 
         //Circulating Supply
 
-        String xpathCirculatingSupply = "//*[@id=\"scr-res-table\"]/table/tbody/tr[*]/td[10]";
+        String xpathCirculatingSupply = "//*[@id=\"scr-res-table\"]/div[2]/table/tbody/tr[*]/td[10]";
         
         List<WebElement> circulatingSupply = new ArrayList<WebElement>();
 

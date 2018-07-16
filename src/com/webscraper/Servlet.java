@@ -32,9 +32,9 @@ public class Servlet extends HttpServlet {
 		
 		List<Coin> coins = CoinDataUtil.getCoins();
 		
-//		for (int i = 0; i < coins.size(); i++) {
-//            System.out.println(coins.get(i).getNumberOrder() + ": " + coins.get(i).getName());
-//        }
+		for (int i = 0; i < coins.size(); i++) {
+            System.out.println(coins.get(i).getNumberOrder() + ": " + coins.get(i).getName());
+        }
 		
 		request.setAttribute("coin_list", coins);
 		

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>MVC-WebScraperTwo</title>
+	<title>WebApp-YahooFinanceScraper</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>

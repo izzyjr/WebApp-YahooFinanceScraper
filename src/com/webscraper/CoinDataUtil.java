@@ -193,4 +193,56 @@ public class CoinDataUtil {
 		
 	}
 	
+	public List<Coin> getCoinsDb() throws Exception {
+		
+		List<Coin> coinsDb = new ArrayList<>();
+		
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			// get a connection 
+			myConn = dataSource.getConnection();
+			
+			// create sql statement
+			String sql = "select * from coin";
+			
+			myStmt = myConn.createStatement();
+			
+			// execute query
+			myRs = myStmt.executeQuery(sql);
+			
+			// process result set
+			while(myRs.next()) {
+				
+				// retrieve data from result set row
+				int numberOrder = myRs.getInt("number_order");
+				String symbol = myRs.getString("symbol");
+				String name = myRs.getString("name");
+				String price = myRs.getString("price");
+				String percentChange = myRs.getString("percent_change");
+				String marketCap = myRs.getString("market_cap");
+				String volumeCurrency = myRs.getString("volume_currency");
+				String circulatingSupply = myRs.getString("circulating_supply");
+				
+				// create new student object
+				Coin coin = new Coin(numberOrder, symbol, name, price, percentChange, marketCap, volumeCurrency, circulatingSupply);
+				
+				// add it to the list of students
+				coinsDb.add(coin);
+				
+			}
+			
+			// close JDBC objects
+			
+			return coinsDb;
+			
+		} finally {
+			// close JDBC objects
+			close(myConn, myStmt, myRs);
+		}
+		
+	}
+	
 }

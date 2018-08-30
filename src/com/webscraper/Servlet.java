@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 //import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +50,17 @@ public class Servlet extends HttpServlet {
 			// Clear database
 			coinDataUtil.clearDb();
 			
-			//Send coin list "coins" to database
+			// Send coin list "coins" to database
 			coinDataUtil.listToDbTable(coins);
+			
+			// Get list of coins from database
+			List<Coin> coinsDb = coinDataUtil.getCoinsDb();
+			
+			request.setAttribute("coin_list", coinsDb);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("view_table.jsp");
+			
+			dispatcher.forward(request, response);
 			
 		} catch (Exception exc) {
 			throw new ServletException(exc);
@@ -60,12 +70,7 @@ public class Servlet extends HttpServlet {
 		for (int i = 0; i < coins.size(); i++) {
             System.out.println(coins.get(i).getNumberOrder() + ": " + coins.get(i).getName());
         }
-//		
-//		request.setAttribute("coin_list", coins);
-//		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("view_table.jsp");
-//		
-//		dispatcher.forward(request, response);
+		
 	}
 
 	/**

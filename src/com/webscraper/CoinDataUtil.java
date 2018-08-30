@@ -170,4 +170,27 @@ public class CoinDataUtil {
 		
 	}
 	
+	public void clearDb() throws Exception {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		try {
+			//get db connection
+			myConn = dataSource.getConnection();
+			
+			//create sql for insert
+			String sql = "delete from coin ";
+			myStmt = myConn.prepareStatement(sql);			
+			
+			//execute sql insert
+			myStmt.execute();
+		}
+		finally {
+			//clean up JDBC	objects
+			close(myConn, myStmt, null);
+		}
+		
+	}
+	
 }

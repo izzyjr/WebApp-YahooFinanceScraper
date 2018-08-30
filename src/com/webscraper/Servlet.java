@@ -42,10 +42,16 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Place scraped Yahoo coins in list
 		List<Coin> coins = coinDataUtil.coinScraper();
 				
 		try {
+			// Clear database
+			coinDataUtil.clearDb();
+			
+			//Send coin list "coins" to database
 			coinDataUtil.listToDbTable(coins);
+			
 		} catch (Exception exc) {
 			throw new ServletException(exc);
 		}

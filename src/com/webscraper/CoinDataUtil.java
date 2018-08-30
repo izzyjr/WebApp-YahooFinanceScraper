@@ -1,7 +1,13 @@
 package com.webscraper;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +15,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CoinDataUtil {
+	
+	private DataSource dataSource;	
+	
+	public CoinDataUtil(DataSource dataSource) {
+		super();
+		this.dataSource = dataSource;
+	}
 
-	public static List<Coin> getCoins() {
+	public List<Coin> coinScraper() {
 		
 		List<Coin> coins = new ArrayList<Coin>();
 		
@@ -76,10 +89,11 @@ public class CoinDataUtil {
 
         circulatingSupply = driver.findElements(By.xpath(xpathCirculatingSupply));
 
-        int size = symbol.size();
+        int size = name.size();
 
         for (int i = 0; i < size; i++) {
-            coins.add(new Coin((i + 1), symbol.get(i).getText(),
+            coins.add(new Coin((i + 1), 
+            			symbol.get(i).getText(),
             			name.get(i).getText(), 
             			price.get(i).getText(), 
             			percentChange.get(i).getText(), 
@@ -91,6 +105,68 @@ public class CoinDataUtil {
 //        driver.quit();
         
         return coins;
+		
+	}
+	
+	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+		
+		try {
+			if (myRs != null) {
+				myRs.close();
+			}
+			
+			if (myStmt != null) {
+				myStmt.close();
+			}
+			
+			if (myConn != null) {
+				myConn.close(); // Doesn't really close it...just puts back in connection pool
+			}
+		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+		}
+		
+	}
+	
+	public void listToDbTable(List<Coin> scrapedCoinList) throws Exception{
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		System.out.println(scrapedCoinList.size());
+		
+		for (int i = 0; i < scrapedCoinList.size(); i++) {
+			
+			try {
+				//get db connection
+				myConn = dataSource.getConnection();
+				
+				//create sql for insert
+				String sql = "insert into coin " 
+						+ "(number_order, symbol, name, price, percent_change, market_cap, volume_currency, circulating_supply) "
+						+ "values (?, ?, ?, ?, ?, ?, ?, ?)";
+				myStmt = myConn.prepareStatement(sql);
+				
+				//set the param values for the students
+				myStmt.setInt(1, scrapedCoinList.get(i).getNumberOrder());
+				myStmt.setString(2, scrapedCoinList.get(i).getSymbol());
+				myStmt.setString(3, scrapedCoinList.get(i).getName());
+				myStmt.setString(4, scrapedCoinList.get(i).getPrice());
+				myStmt.setString(5, scrapedCoinList.get(i).getPercentChange());
+				myStmt.setString(6, scrapedCoinList.get(i).getMarketCap());
+				myStmt.setString(7, scrapedCoinList.get(i).getVolumeCurrency());
+				myStmt.setString(8, scrapedCoinList.get(i).getCirculatingSupply());
+				
+				//execute sql insert
+				myStmt.execute();
+			}
+			finally {
+				//clean up JDBC	objects
+				close(myConn, myStmt, null);
+			}
+			
+		}
 		
 	}
 	

@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CoinDataUtil {
 	
@@ -28,8 +29,11 @@ public class CoinDataUtil {
 		List<Coin> coins = new ArrayList<Coin>();
 		
 		System.setProperty("webdriver.chrome.driver", "/Users/israelmesa/Desktop/ChromeDriver/chromedriver");
+		
+		final ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
 
         driver.get("https://finance.yahoo.com/cryptocurrencies?count=120");
 
@@ -102,7 +106,7 @@ public class CoinDataUtil {
             			circulatingSupply.get(i).getText()));
         }
         
-//        driver.quit();
+        driver.quit();
         
         return coins;
 		

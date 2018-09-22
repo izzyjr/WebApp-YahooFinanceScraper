@@ -43,6 +43,38 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
+			//read the "command" parameter
+			String theCommand = request.getParameter("command");
+			
+			//if the command is missing, then default to listing students
+//			if(theCommand == null) {
+//				theCommand = "LIST";
+//			}
+			
+			//route to the appropriate method
+			switch(theCommand) {
+				case "LIST":
+					listCoins(request, response);
+					break;
+					
+				default:
+					listCoins(request, response);
+					break;
+			}
+			
+//			//list students in ... mvc fashion 
+//			listStudents(request, response);
+		}
+		catch (Exception exc) {
+			throw new ServletException(exc);
+		}
+		
+	}
+	
+	private void listCoins(HttpServletRequest request, HttpServletResponse response) 
+			throws Exception {
+		
 		// Place scraped Yahoo coins in list
 		List<Coin> coins = coinDataUtil.coinScraper();
 				
@@ -56,8 +88,10 @@ public class Servlet extends HttpServlet {
 			// Get list of coins from database
 			List<Coin> coinsDb = coinDataUtil.getCoinsDb();
 			
+			// add coinsDB to the request
 			request.setAttribute("coin_list", coinsDb);
 			
+			// send to JSP (view)
 			RequestDispatcher dispatcher = request.getRequestDispatcher("view_table.jsp");
 			
 			dispatcher.forward(request, response);
@@ -73,12 +107,5 @@ public class Servlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+	
 }

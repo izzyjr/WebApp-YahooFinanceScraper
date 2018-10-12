@@ -32,11 +32,7 @@
 	  <a href="${logout}">Logout</a>
 	</div>
 	
-	<input type="button" value="Login" 
-		onclick="window.location.href='LoginPage.jsp'; return false;"
-		class="add-student-button"
-	/>
-	<button>Create Account</button><br>
+	<br>
 	
 	Welcome <%= currentUser.getFirstName() + " " + currentUser.getLastName() %>
 	

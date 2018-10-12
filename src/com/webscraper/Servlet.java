@@ -25,6 +25,7 @@ public class Servlet extends HttpServlet {
        	
 		private CoinDataUtil coinDataUtil;
 		private UserDataUtil userDataUtil;
+		private boolean userLogged = false;
 	
 		@Resource(name="WebApp-YahooFinanceScraper")
 		private DataSource dataSource;
@@ -56,28 +57,27 @@ public class Servlet extends HttpServlet {
 			//read the "command" parameter
 			String theCommand = request.getParameter("command");
 			
-//			if the command is missing, then default to listing students
-//			if(currentUser == null) {
-//				response.sendRedirect("home_page.jsp");
-//			}
-			
-			//route to the appropriate method
-			switch(theCommand) {
-				case "LIST":
-					listCoins(request, response);
-					break;
-					
-				case "LOGOUT":
-					logout(request, response);
-					break;
+			if (userLogged) {
+				
+				//route to the appropriate method
+				switch(theCommand) {
+					case "LIST":
+						listCoins(request, response);
+						break;
+						
+					case "LOGOUT":
+						logout(request, response);
+						break;
 
-				default:
-					listCoins(request, response);
-					break;
+					default:
+						listCoins(request, response);
+						break;
+				}
+				
+			} else {
+				response.sendRedirect("home_page.jsp");
 			}
 			
-//			//list students in ... mvc fashion 
-//			listStudents(request, response);
 		}
 		catch (Exception exc) {
 			throw new ServletException(exc);
@@ -152,7 +152,8 @@ public class Servlet extends HttpServlet {
 			   		    
 		     if (user.isValid()) {
 		          HttpSession session = request.getSession();	    
-		          session.setAttribute("currentSessionUser",user); 
+		          session.setAttribute("currentSessionUser",user);
+		          userLogged = true;
 		          response.sendRedirect("home_page_logged.jsp"); //logged-in page      		
 		     } else {
 		    	 response.sendRedirect("invalidLogin.jsp"); //error page
@@ -170,6 +171,7 @@ public class Servlet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.removeAttribute("currentSessionUser");
+			userLogged = false;
 			session.invalidate();
 			response.sendRedirect("home_page.jsp");
 			

@@ -66,6 +66,10 @@ public class Servlet extends HttpServlet {
 				case "LIST":
 					listCoins(request, response);
 					break;
+					
+				case "LOGOUT":
+					logout(request, response);
+					break;
 
 				default:
 					listCoins(request, response);
@@ -92,10 +96,7 @@ public class Servlet extends HttpServlet {
 				login(request, response);
 				break;
 				
-			default:
-				listCoins(request, response);
-				break;
-		}
+			}
 			
 		} catch (Exception exc) {
 			throw new ServletException(exc);
@@ -152,7 +153,7 @@ public class Servlet extends HttpServlet {
 		     if (user.isValid()) {
 		          HttpSession session = request.getSession();	    
 		          session.setAttribute("currentSessionUser",user); 
-		          response.sendRedirect("userLogged.jsp"); //logged-in page      		
+		          response.sendRedirect("home_page_logged.jsp"); //logged-in page      		
 		     } else {
 		    	 response.sendRedirect("invalidLogin.jsp"); //error page
 		     }
@@ -160,6 +161,23 @@ public class Servlet extends HttpServlet {
 		} catch (Throwable theException) {
 			System.out.println(theException);
 		}
+	}
+	
+	private void logout(HttpServletRequest request, HttpServletResponse response) 
+			throws Exception {
+		
+		try {
+			
+			HttpSession session = request.getSession();
+			session.removeAttribute("currentSessionUser");
+			session.invalidate();
+			response.sendRedirect("home_page.jsp");
+			
+		} catch (Throwable theException) {
+			System.out.println(theException);
+		}
+		
+		
 	}
 	
 }

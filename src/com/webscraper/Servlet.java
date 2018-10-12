@@ -5,13 +5,16 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
-//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import com.webscraper.user.User;
+import com.webscraper.user.UserDataUtil;
 
 /**
  * Servlet implementation class Servlet
@@ -21,6 +24,7 @@ public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        	
 		private CoinDataUtil coinDataUtil;
+		private UserDataUtil userDataUtil;
 	
 		@Resource(name="WebApp-YahooFinanceScraper")
 		private DataSource dataSource;
@@ -31,12 +35,12 @@ public class Servlet extends HttpServlet {
 			
 			try {
 				coinDataUtil = new CoinDataUtil(dataSource);
+				userDataUtil = new UserDataUtil(dataSource);
 			}
 			catch (Exception exc) {
 				throw new ServletException(exc);
 			}
 		}
-		
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,12 +48,17 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			
+			//current user
+//			HttpSession session = request.getSession(false);
+//			User currentUser = ((User) (session.getAttribute("currentSessionUser")));
+			
 			//read the "command" parameter
 			String theCommand = request.getParameter("command");
 			
-			//if the command is missing, then default to listing students
-//			if(theCommand == null) {
-//				theCommand = "LIST";
+//			if the command is missing, then default to listing students
+//			if(currentUser == null) {
+//				response.sendRedirect("home_page.jsp");
 //			}
 			
 			//route to the appropriate method
@@ -57,7 +66,7 @@ public class Servlet extends HttpServlet {
 				case "LIST":
 					listCoins(request, response);
 					break;
-					
+
 				default:
 					listCoins(request, response);
 					break;
@@ -67,6 +76,28 @@ public class Servlet extends HttpServlet {
 //			listStudents(request, response);
 		}
 		catch (Exception exc) {
+			throw new ServletException(exc);
+		}
+		
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			
+			String theCommand = request.getParameter("command");
+			switch(theCommand) {
+			
+			case "LOGIN":
+				login(request, response);
+				break;
+				
+			default:
+				listCoins(request, response);
+				break;
+		}
+			
+		} catch (Exception exc) {
 			throw new ServletException(exc);
 		}
 		
@@ -106,6 +137,29 @@ public class Servlet extends HttpServlet {
         }
 		
 	}
-
+	
+	private void login(HttpServletRequest request, HttpServletResponse response) 
+			throws Exception {
+		
+		try {	    
+			
+		     User user = new User();
+		     user.setUserName(request.getParameter("un"));
+		     user.setPassword(request.getParameter("pw"));
+		
+		     user = userDataUtil.login(user);
+			   		    
+		     if (user.isValid()) {
+		          HttpSession session = request.getSession();	    
+		          session.setAttribute("currentSessionUser",user); 
+		          response.sendRedirect("userLogged.jsp"); //logged-in page      		
+		     } else {
+		    	 response.sendRedirect("invalidLogin.jsp"); //error page
+		     }
+		          
+		} catch (Throwable theException) {
+			System.out.println(theException);
+		}
+	}
 	
 }

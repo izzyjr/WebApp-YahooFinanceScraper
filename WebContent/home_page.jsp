@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>WebApp-YahooFinanceScraper</title>
+	<title>Home</title>
 </head>
 
 <body>
@@ -12,15 +12,21 @@
 	<c:url var="cryptocurrencies" value="Servlet">
 		<c:param name="command" value="LIST" />
 	</c:url>
+	<c:url var="about" value="Servlet">
+		<c:param name="command" value="ABOUT" />
+	</c:url>	
 
 	<div class="topnav">
 	  <a href="#home">Home</a>
-	  <a href="#about">About</a>
+	  <a href="${about}">About</a>
 	  <a href="${cryptocurrencies}">Cryptocurrencies</a>
-	  <a href="#login">Login</a>
+	  <a href="#login" onclick="window.location.href='LoginPage.jsp'; return false;">Login</a>
 	</div>
 	
-	<button>Login</button>
+	<input type="button" value="Login" 
+		onclick="window.location.href='LoginPage.jsp'; return false;"
+		class="add-student-button"
+	/>
 	<button>Create Account</button>
 
 </body>

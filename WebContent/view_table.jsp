@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>WebApp-YahooFinanceScraper</title>
+	<title>Cryptocurrencies</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,11 +24,15 @@
 	<c:url var="logout" value="Servlet">
 		<c:param name="command" value="LOGOUT" />
 	</c:url>
+	<c:url var="about" value="Servlet">
+		<c:param name="command" value="ABOUT" />
+	</c:url>
+	
 		
 
 	<div class="topnav">
 	  <a href="#home">Home</a>
-	  <a href="#about">About</a>
+	  <a href="${about}">About</a>
 	  <a href="${cryptocurrencies}">Cryptocurrencies</a>
 	  <a href="${logout}">Logout</a>
 	</div>

@@ -68,9 +68,14 @@ public class Servlet extends HttpServlet {
 					case "LOGOUT":
 						logout(request, response);
 						break;
+						
+					case "ABOUT":
+						about(request, response);
+						break;	
 
 					default:
-						listCoins(request, response);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
+						dispatcher.forward(request, response);
 						break;
 				}
 				
@@ -185,6 +190,14 @@ public class Servlet extends HttpServlet {
 			System.out.println(theException);
 		}
 		
+		
+	}
+	
+	private void about(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("about.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 	

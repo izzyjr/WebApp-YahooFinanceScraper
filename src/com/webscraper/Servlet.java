@@ -75,7 +75,10 @@ public class Servlet extends HttpServlet {
 				}
 				
 			} else {
-				response.sendRedirect("home_page.jsp");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
+				dispatcher.forward(request, response);
+				
 			}
 			
 		}
@@ -154,9 +157,11 @@ public class Servlet extends HttpServlet {
 		          HttpSession session = request.getSession();	    
 		          session.setAttribute("currentSessionUser",user);
 		          userLogged = true;
-		          response.sendRedirect("home_page_logged.jsp"); //logged-in page      		
+		          RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
+		          dispatcher.forward(request, response); //logged-in page      		
 		     } else {
-		    	 response.sendRedirect("invalidLogin.jsp"); //error page
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
+			    dispatcher.forward(request, response); //error page
 		     }
 		          
 		} catch (Throwable theException) {
@@ -173,7 +178,8 @@ public class Servlet extends HttpServlet {
 			session.removeAttribute("currentSessionUser");
 			userLogged = false;
 			session.invalidate();
-			response.sendRedirect("home_page.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
+			dispatcher.forward(request, response);
 			
 		} catch (Throwable theException) {
 			System.out.println(theException);

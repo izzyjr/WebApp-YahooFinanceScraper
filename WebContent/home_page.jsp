@@ -27,7 +27,11 @@
 		onclick="window.location.href='LoginPage.jsp'; return false;"
 		class="add-student-button"
 	/>
-	<button>Create Account</button>
+	<input type="button" value="Create Account" 
+		onclick="window.location.href='createAccount.jsp'; return false;"
+		class="add-student-button"
+	/>
+	
 
 </body>
 

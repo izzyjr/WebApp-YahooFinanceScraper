@@ -49,11 +49,7 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			
-			//current user
-//			HttpSession session = request.getSession(false);
-//			User currentUser = ((User) (session.getAttribute("currentSessionUser")));
-			
+						
 			//read the "command" parameter
 			String theCommand = request.getParameter("command");
 			
@@ -103,6 +99,10 @@ public class Servlet extends HttpServlet {
 			case "LOGIN":
 				login(request, response);
 				break;
+				
+			case "CREATE_ACCOUNT":
+				createAccount(request, response);
+				break;	
 				
 			}
 			
@@ -172,6 +172,7 @@ public class Servlet extends HttpServlet {
 		} catch (Throwable theException) {
 			System.out.println(theException);
 		}
+		
 	}
 	
 	private void logout(HttpServletRequest request, HttpServletResponse response) 
@@ -198,6 +199,36 @@ public class Servlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("about.jsp");
 		dispatcher.forward(request, response);
+		
+	}
+	
+	private void createAccount(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		try {	    
+			
+		     User user = new User();
+		     user.setFirstName(request.getParameter("first"));
+		     user.setLastName(request.getParameter("last"));
+		     user.setUserName(request.getParameter("un"));
+		     user.setPassword(request.getParameter("pw"));
+		
+		     user = userDataUtil.createAccount(user);
+			   		    
+		     if (user.isValid()) {
+//		          HttpSession session = request.getSession();	    
+//		          session.setAttribute("currentSessionUser",user);
+//		          userLogged = true;
+		          RequestDispatcher dispatcher = request.getRequestDispatcher("LoginPage.jsp");
+		          dispatcher.forward(request, response); //logged-in page      		
+		     } else {
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
+			    dispatcher.forward(request, response); //error page
+		     }
+		          
+		} catch (Throwable theException) {
+			System.out.println(theException);
+		}
 		
 	}
 	

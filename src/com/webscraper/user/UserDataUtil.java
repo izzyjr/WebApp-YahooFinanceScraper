@@ -1,6 +1,7 @@
 package com.webscraper.user;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -25,12 +26,7 @@ public class UserDataUtil {
 	   String username = bean.getUsername();    
 	   String password = bean.getPassword();   
 	    
-	   String searchQuery =
-            "select * from users where username='"
-                     + username
-                     + "' AND password='"
-                     + password
-                     + "'";
+	   String searchQuery = "select * from users where username='" + username + "' AND password='" + password + "'";
 	    
 	   // "System.out.println" prints in the console; Normally used to trace the process
 	   System.out.println("Your user name is " + username);          
@@ -62,14 +58,12 @@ public class UserDataUtil {
 	         bean.setLastName(lastName);
 	         bean.setValid(true);
 	      }
+	      
+	   } catch (Exception ex) {
+		   	System.out.println("Log In failed: An Exception has occurred! " + ex);
 	   } 
-
-   catch (Exception ex) 
-   {
-      System.out.println("Log In failed: An Exception has occurred! " + ex);
-   } 
 	    
-   //some exception handling
+	   //exception handling
 	   finally {
 			// close JDBC objects
 			close(myConn, myStmt, myRs);
@@ -77,6 +71,44 @@ public class UserDataUtil {
 
 	   return bean;
 	
+   }
+   
+   public User createAccount(User bean) throws Exception {
+	   
+	   //preparing some objects for connection 
+	   Connection myConn = null;
+	   PreparedStatement myStmt = null;
+	   
+	   String firstName = bean.getFirstName();
+	   String lastName = bean.getLastName();
+	   String username = bean.getUsername();    
+	   String password = bean.getPassword();
+	   
+	   try {
+		   
+		   	//get db connection
+			myConn = dataSource.getConnection();
+			
+			//create sql for insert
+			String sql = "INSERT INTO users VALUES('" + firstName + "', '" + lastName + "', '" + username + "', '" +  password + "');";
+			myStmt = myConn.prepareStatement(sql);
+			
+			//execute sql insert
+			myStmt.execute();
+		
+		} catch (Exception ex) {
+		   	System.out.println("Create Account failed: An Exception has occurred! " + ex);
+	   }
+	   
+	   //exception handling
+	   finally {
+			// close JDBC objects
+			close(myConn, myStmt, null);
+		}
+	   
+	   bean.setValid(true);
+	   return bean;
+	   
    }
    
    private static void close(Connection myConn, Statement myStmt, ResultSet myRs) {

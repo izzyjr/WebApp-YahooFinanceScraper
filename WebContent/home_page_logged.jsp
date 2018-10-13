@@ -12,7 +12,9 @@
 
 	<% 
 	
-		User currentUser = ((User) (session.getAttribute("currentSessionUser")));
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
+		response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+		response.setHeader("Expires", "0"); //Proxies
 	
 	%>
 
@@ -31,11 +33,6 @@
 	  <a href="${cryptocurrencies}">Cryptocurrencies</a>
 	  <a href="${logout}">Logout</a>
 	</div>
-	
-	<br>
-	
-	Welcome <%= currentUser.getFirstName() + " " + currentUser.getLastName() %>
-	
 
 </body>
 

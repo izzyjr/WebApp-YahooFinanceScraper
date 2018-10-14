@@ -26,7 +26,7 @@ public class Servlet extends HttpServlet {
 		private CoinDataUtil coinDataUtil;
 		private UserDataUtil userDataUtil;
 		private boolean userLogged = false;
-	
+
 		@Resource(name="WebApp-YahooFinanceScraper")
 		private DataSource dataSource;
 		
@@ -67,6 +67,10 @@ public class Servlet extends HttpServlet {
 						
 					case "ABOUT":
 						about(request, response);
+						break;
+						
+					case "HOME":
+						home(request, response);
 						break;	
 
 					default:
@@ -202,6 +206,14 @@ public class Servlet extends HttpServlet {
 		
 	}
 	
+	private void home(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+	
 	private void createAccount(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
@@ -216,14 +228,15 @@ public class Servlet extends HttpServlet {
 		     user = userDataUtil.createAccount(user);
 			   		    
 		     if (user.isValid()) {
-//		          HttpSession session = request.getSession();	    
-//		          session.setAttribute("currentSessionUser",user);
-//		          userLogged = true;
+		    	 
 		          RequestDispatcher dispatcher = request.getRequestDispatcher("LoginPage.jsp");
-		          dispatcher.forward(request, response); //logged-in page      		
+		          dispatcher.forward(request, response); //logged-in page
+		          
 		     } else {
+		    	 
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
 			    dispatcher.forward(request, response); //error page
+			    
 		     }
 		          
 		} catch (Throwable theException) {

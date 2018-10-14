@@ -43,6 +43,7 @@
 	  <a href="${about}">About</a>
 	  <a href="${cryptocurrencies}">Cryptocurrencies</a>
 	  <a href="${logout}">Logout</a>
+	  ${currentSessionUser.firstName}
 	</div>
 	
 	<br>

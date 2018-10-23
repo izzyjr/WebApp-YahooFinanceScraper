@@ -71,7 +71,11 @@ public class Servlet extends HttpServlet {
 						
 					case "HOME":
 						home(request, response);
-						break;	
+						break;
+						
+					case "ACCOUNT":
+						getUser(request, response);
+						break;
 
 					default:
 						RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
@@ -166,11 +170,15 @@ public class Servlet extends HttpServlet {
 		          HttpSession session = request.getSession();	    
 		          session.setAttribute("currentSessionUser",user);
 		          userLogged = true;
-		          RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
-		          dispatcher.forward(request, response); //logged-in page      		
+//		          RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
+//		          dispatcher.forward(request, response); //logged-in page  
+		          response.sendRedirect("home_page_logged.jsp");
 		     } else {
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
-			    dispatcher.forward(request, response); //error page
+		    	 
+//			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
+//			    dispatcher.forward(request, response); //error page
+			    response.sendRedirect("invalidLogin.jsp");
+			    
 		     }
 		          
 		} catch (Throwable theException) {
@@ -188,8 +196,9 @@ public class Servlet extends HttpServlet {
 			session.removeAttribute("currentSessionUser");
 			userLogged = false;
 			session.invalidate();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
-			dispatcher.forward(request, response);
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("home_page.jsp");
+//			dispatcher.forward(request, response);
+			response.sendRedirect("home_page.jsp");
 			
 		} catch (Throwable theException) {
 			System.out.println(theException);
@@ -201,16 +210,18 @@ public class Servlet extends HttpServlet {
 	private void about(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("about.jsp");
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("about.jsp");
+//		dispatcher.forward(request, response);
+		response.sendRedirect("about.jsp");
 		
 	}
 	
 	private void home(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
+//		dispatcher.forward(request, response);
+		response.sendRedirect("home_page_logged.jsp");
 		
 	}
 	
@@ -229,19 +240,28 @@ public class Servlet extends HttpServlet {
 			   		    
 		     if (user.isValid()) {
 		    	 
-		          RequestDispatcher dispatcher = request.getRequestDispatcher("LoginPage.jsp");
-		          dispatcher.forward(request, response); //logged-in page
+//		          RequestDispatcher dispatcher = request.getRequestDispatcher("LoginPage.jsp");
+//		          dispatcher.forward(request, response); //logged-in page
+		    	 response.sendRedirect("LoginPage.jsp");
 		          
 		     } else {
 		    	 
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
-			    dispatcher.forward(request, response); //error page
+//			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");
+//			    dispatcher.forward(request, response); //error page
+			    response.sendRedirect("invalidLogin.jsp");
 			    
 		     }
 		          
 		} catch (Throwable theException) {
 			System.out.println(theException);
 		}
+		
+	}
+	
+	private void getUser(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		response.sendRedirect("yourAccount.jsp");
 		
 	}
 	

@@ -22,7 +22,6 @@
 	
 	%>
 
-	<!-- set up a link for each student -->
 	<c:url var="home" value="Servlet">
 		<c:param name="command" value="HOME" />
 	</c:url>
@@ -32,6 +31,9 @@
 	<c:url var="cryptocurrencies" value="Servlet">
 		<c:param name="command" value="LIST" />
 	</c:url>
+		<c:url var="yourAccount" value="Servlet">
+		<c:param name="command" value="ACCOUNT" />
+	</c:url>
 	<c:url var="logout" value="Servlet">
 		<c:param name="command" value="LOGOUT" />
 	</c:url>
@@ -40,8 +42,8 @@
 	  <a href="${home}">Home</a>
 	  <a href="${about}">About</a>
 	  <a href="${cryptocurrencies}">Cryptocurrencies</a>
-	  <a href="${logout}">Logout</a>
-	  ${currentSessionUser.firstName}
+	  <a href="${yourAccount}">${currentSessionUser.firstName}'s Account</a>
+	  <a href="${logout}">Log Out</a>
 	</div>
 	
 	<br>

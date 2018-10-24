@@ -3,8 +3,9 @@
     pageEncoding="UTF-8" import="com.webscraper.user.User"%>
 
 <html>
+
 	<head>
-		<title>About</title>
+		<title>Home</title>
 	</head>
 	<body>
 	
@@ -47,8 +48,8 @@
 		</div>
 		
 		<br>
-		<h2>About</h2>
-		
-	</body>
+		<h3>Welcome ${currentSessionUser.firstName}!</h3>
 	
+	</body>
+
 </html>

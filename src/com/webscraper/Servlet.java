@@ -172,7 +172,7 @@ public class Servlet extends HttpServlet {
 		          userLogged = true;
 //		          RequestDispatcher dispatcher = request.getRequestDispatcher("home_page_logged.jsp");
 //		          dispatcher.forward(request, response); //logged-in page  
-		          response.sendRedirect("home_page_logged.jsp");
+		          response.sendRedirect("logged_welcome.jsp");
 		     } else {
 		    	 
 //			    RequestDispatcher dispatcher = request.getRequestDispatcher("invalidLogin.jsp");

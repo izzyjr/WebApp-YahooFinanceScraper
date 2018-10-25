@@ -238,3 +238,21 @@ footer p {
     text-align: center;
     margin: 20px;
 }
+
+/*-------------------------------------------------------*/
+/* VIEW TABLE */
+/*-------------------------------------------------------*/
+
+.title-time-box {
+	max-width: 1140px;
+    margin: 20px auto;
+    text-align: center;
+    width: 1140px;    
+}
+
+table {
+	max-width: 1140px;
+	margin: 20px auto;
+	text-align: center;
+	width: 1140px;
+}

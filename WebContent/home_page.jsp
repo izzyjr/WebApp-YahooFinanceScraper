@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
@@ -11,7 +10,6 @@
 		<link href='https://fonts.googleapis.com/css?family=Lato:100,300,300i,400' rel="stylesheet" type="text/css">
 		<title>Home</title>
 	</head>
-	
 	<body>
 		<c:url var="about" value="Servlet">
 			<c:param name="command" value="ABOUT" />

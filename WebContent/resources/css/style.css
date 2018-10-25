@@ -1,0 +1,130 @@
+
+/* Turquoise color: #1abc9c */
+/* Turquoise 2 color: #169e83 */
+
+/*-------------------------------------------------------*/
+/* BASIC SETUP */
+/*-------------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #f5f5f5;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+/*-------------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*-------------------------------------------------------*/
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* ----- HEADINGS -----*/
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 30px;
+	font-size: 240%;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	word-spacing: 4px;
+}
+
+/* ----- BUTTONS -----*/
+
+.btn:link,
+.btn:visited {
+	display: inline-block;
+	padding: 10px 30px;
+	font-weight: 300;
+	text-decoration: none;
+	border-radius: 200px;
+	transition: background-color 0.4s, border 0.4s, color 0.4s;
+}
+
+.btn-full:link,
+.btn-full:visited {
+	background-color: #1abc9c;
+	border: 1px solid #1abc9c;
+	color: #fff;
+	margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+	background-color: #f3f3f3;
+	border: 1px solid #1abc9c;
+	color: #1abc9c;
+}
+
+.btn:hover,
+.btn:active {
+	background-color: #169e83;
+}
+
+.btn-full:hover,
+.btn-full:active {
+	border: 1px solid #169e83;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+	border: 1px solid #169e83;
+	color: #f3f3f3;
+}
+
+/*-------------------------------------------------------*/
+/* HEADER */
+/*-------------------------------------------------------*/
+
+header {
+	height: 100vh;
+}
+
+.hero-text-box {
+	max-width: 1140px;
+    margin: 70px auto;
+    text-align: center;
+    width: 570px;    
+}
+
+.main-nav {
+	max-width: 1140px;
+    margin: 25px auto 100px auto;
+    text-align: center;
+    width: 570px;
+    list-style: none;
+}
+
+.main-nav li {
+	display: inline-block;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+	color: #1abc9c;
+	text-decoration: none;
+	text-transform: uppercase;
+	word-spacing: 3px;
+	font-size: 100%;
+	transition: color 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+	color: #169e83;
+}

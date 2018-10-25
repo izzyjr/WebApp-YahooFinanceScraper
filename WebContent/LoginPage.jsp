@@ -23,7 +23,7 @@
                             <label>Username</label>
                         </div>
                         <div class="col span-2-of-3">
-                            <input type="text" name="un" placeholder="Your Name" required>
+                            <input type="text" name="un" placeholder="Username" required>
                         </div>
                     </div>
                     <div class="row">
@@ -31,7 +31,7 @@
                             <label>Password</label>
                         </div>
                         <div class="col span-2-of-3">
-                            <input type="password" name="pw" placeholder="Your Password" required>
+                            <input type="password" name="pw" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="row">

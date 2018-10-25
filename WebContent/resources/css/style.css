@@ -150,9 +150,9 @@ header {
 	color: #169e83;
 }
 
-/*-------------------------------------------------------*/
+/*------------------------------------------------------------*/
 /* FORMS - LoginPage.jsp, invalidLogin.jsp, createAccount.jsp */
-/*-------------------------------------------------------*/
+/*------------------------------------------------------------*/
 
 .contact-form {
 	width: 684px;
@@ -173,7 +173,7 @@ input[type=password] {
 
 .back-home {
 	width: 684px;
-	margin: 100px auto 0 auto;
+	margin: 70px auto 0 auto;
 }
 
 .back-home a:link,

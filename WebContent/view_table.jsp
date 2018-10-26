@@ -55,36 +55,55 @@
 					</ul>
 				</div>
 			</nav>
-			<div class="title-time-box">    
-                <h2>Crypto Update - <%= new java.util.Date() %></h2>
-            </div>
 		</header>
 		<section>
+		<div class="title-time-box">    
+        	<h2>Crypto Update - <%= new java.util.Date() %></h2>
+        </div>
+        <div class="row">
 			<table>
 				<tr>
-					<th>#</th>
-					<th>Symbol</th>
-					<th>Name</th>
+					<th class="left-cells">#</th>
+					<th class="left-cells">Symbol</th>
+					<th class="left-cells">Name</th>
 					<th>Price</th>
-					<th>% Change</th>
-					<th>Market Cap</th>
-					<th>Volume in Currency (24Hr)</th>
-					<th>Circulating Supply</th>
+					<th class="right-cells">% Change</th>
+					<th class="right-cells">Market Cap</th>
+					<th class="right-cells">Volume in Currency (24Hr)</th>
+					<th class="right-cells">Circulating Supply</th>
 				</tr>				
 				<c:forEach var="tempCoins" items="${coin_list}">				
-					<tr>
-						<td>${tempCoins.numberOrder}</td>
-						<td>${tempCoins.symbol}</td>
-						<td>${tempCoins.name}</td>
-						<td>${tempCoins.price}</td>
-						<td>${tempCoins.percentChange}</td>
-						<td>${tempCoins.marketCap}</td>
-						<td>${tempCoins.volumeCurrency}</td>
-						<td>${tempCoins.circulatingSupply}</td>
+					<tr class="shade">
+						<td class="left-cells">${tempCoins.numberOrder}</td>
+						<td class="left-cells">${tempCoins.symbol}</td>
+						<td class="left-cells">${tempCoins.name}</td>
+						<td class="right-cells">${tempCoins.price}</td>
+						<td class="right-cells">${tempCoins.percentChange}</td>
+						<td class="right-cells">${tempCoins.marketCap}</td>
+						<td class="right-cells">${tempCoins.volumeCurrency}</td>
+						<td class="right-cells">${tempCoins.circulatingSupply}</td>
 					</tr>		
 				</c:forEach>
 			</table>
+		</div>	
 		</section>
+		<div class="footer">
+            <div class="row">
+            	<div class="col span-1-of-2">
+            	</div>
+                <div class="col span-1-of-2">
+                    <ul class="social-links">
+                        <li><a href="https://twitter.com/Izzy_Mesa"><i class="ion-social-twitter"></i></a></li>
+                        <li><a href="https://github.com/izzyjr"><i class="ion-social-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                    Copyright &copy; 2018 by Israel Mesa. All rights reserved.
+                </p>
+            </div>
+        </div>
 		
 	</body>
 	

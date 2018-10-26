@@ -54,11 +54,15 @@
 						<li><a href="${logout}">Log Out</a></li>
 					</ul>
 				</div>
-			</nav>
-			<div class="hero-text-box">    
-                <h2>Welcome ${currentSessionUser.firstName} ${currentSessionUser.lastName}!</h2>
-            </div>
+			</nav>	
 		</header>
+		<section>
+			<div class="row">
+				<div class="title-time-box">    
+                	<h2>Welcome ${currentSessionUser.firstName} ${currentSessionUser.lastName}!</h2>
+            	</div>
+			</div>
+		</section>
 		<footer>
             <div class="row">
             	<div class="col span-1-of-2"></div>

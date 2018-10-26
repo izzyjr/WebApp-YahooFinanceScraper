@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 		<link href='https://fonts.googleapis.com/css?family=Lato:100,300,300i,400' rel="stylesheet" type="text/css">
-		<title>Log In Page</title>
+		<title>Create Account</title>
 	</head>
 	<body>		
 		<section>

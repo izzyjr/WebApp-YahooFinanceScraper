@@ -191,7 +191,7 @@ input[type=password] {
 	font-size: 100%;
     word-spacing: 1px;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 10px auto 30px auto;
     letter-spacing: 0.5px;
 }
 
@@ -294,3 +294,16 @@ td {
 
 .shade:nth-child(odd) {background: #f5f5f5}
 .shade:nth-child(even) {background: #ededed}
+
+
+/*-------------------------------------------------------*/
+/* MAIN TEXT */
+/*-------------------------------------------------------*/
+
+.main-text {
+    text-align: justify;
+    margin: 30px auto;
+    width: 790px;
+    word-spacing: 1px;
+    letter-spacing: 0.5px;
+}

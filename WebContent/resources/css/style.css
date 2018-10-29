@@ -307,3 +307,29 @@ td {
     word-spacing: 1px;
     letter-spacing: 0.5px;
 }
+
+/*-------------------------------------------------------*/
+/* LINKS */
+/*-------------------------------------------------------*/
+
+.tech-link {
+	margin: 30px auto;
+    width: 790px;
+    word-spacing: 1px;
+    letter-spacing: 0.5px;
+}
+
+.tech-link h3 a:link,
+.tech-link h3 a:visited {
+	color: #1abc9c;
+	text-decoration: none;
+	text-transform: uppercase;
+	word-spacing: 3px;
+	font-size: 100%;
+	transition: color 0.2s;
+}
+
+.tech-link h3 a:hover,
+.tech-link h3 a:active {
+	color: #169e83;
+}

@@ -57,35 +57,35 @@
 			</nav>
 		</header>
 		<section>
-		<div class="title-time-box">    
-        	<h2>Crypto Update - <%= new java.util.Date() %></h2>
-        </div>
-        <div class="row">
-			<table>
-				<tr>
-					<th class="left-cells">#</th>
-					<th class="left-cells">Symbol</th>
-					<th class="left-cells">Name</th>
-					<th>Price</th>
-					<th class="right-cells">% Change</th>
-					<th class="right-cells">Market Cap</th>
-					<th class="right-cells">Volume in Currency (24Hr)</th>
-					<th class="right-cells">Circulating Supply</th>
-				</tr>				
-				<c:forEach var="tempCoins" items="${coin_list}">				
-					<tr class="shade">
-						<td class="left-cells">${tempCoins.numberOrder}</td>
-						<td class="left-cells">${tempCoins.symbol}</td>
-						<td class="left-cells">${tempCoins.name}</td>
-						<td class="right-cells">${tempCoins.price}</td>
-						<td class="right-cells">${tempCoins.percentChange}</td>
-						<td class="right-cells">${tempCoins.marketCap}</td>
-						<td class="right-cells">${tempCoins.volumeCurrency}</td>
-						<td class="right-cells">${tempCoins.circulatingSupply}</td>
-					</tr>		
-				</c:forEach>
-			</table>
-		</div>	
+			<div class="title-time-box">    
+	        	<h2>Crypto Update - <%= new java.util.Date() %></h2>
+	        </div>
+	        <div class="row">
+				<table>
+					<tr>
+						<th class="left-cells">#</th>
+						<th class="left-cells">Symbol</th>
+						<th class="left-cells">Name</th>
+						<th>Price</th>
+						<th class="right-cells">% Change</th>
+						<th class="right-cells">Market Cap</th>
+						<th class="right-cells">Volume in Currency (24Hr)</th>
+						<th class="right-cells">Circulating Supply</th>
+					</tr>				
+					<c:forEach var="tempCoins" items="${coin_list}">				
+						<tr class="shade">
+							<td class="left-cells">${tempCoins.numberOrder}</td>
+							<td class="left-cells">${tempCoins.symbol}</td>
+							<td class="left-cells">${tempCoins.name}</td>
+							<td class="right-cells">${tempCoins.price}</td>
+							<td class="right-cells">${tempCoins.percentChange}</td>
+							<td class="right-cells">${tempCoins.marketCap}</td>
+							<td class="right-cells">${tempCoins.volumeCurrency}</td>
+							<td class="right-cells">${tempCoins.circulatingSupply}</td>
+						</tr>		
+					</c:forEach>
+				</table>
+			</div>	
 		</section>
 		<div class="footer">
             <div class="row">

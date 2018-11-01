@@ -43,33 +43,3 @@
 	</body>
 
 </html>
-
-
-
-
-
-
-
-<!--
-
-				FRONT END JUNK I CAN'T DELETE JUST YET
-
-
-
-               <input type="button" value="Create Account" 
-					onclick="window.location.href='createAccount.jsp'; return false;"
-					class="btn btn-full"
-				/>
-                <input type="button" value="Log In" 
-					onclick="window.location.href='LoginPage.jsp'; return false;"
-					class="btn btn-ghost"
-					
-				<li><a href="#login" onclick="window.location.href='LoginPage.jsp'; return false;">Log In</a></li>	
-					
-					
-					
-					
-					
-					
-					
-				/> -->

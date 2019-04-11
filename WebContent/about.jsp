@@ -74,7 +74,7 @@
 			</div>
 			<div class="row">
 				<div class ="tech-link">
-					<h3><a href="https://www.mysql.com/products/community/"><i class="ion-link"></i> MYSQL</a></h3>
+					<h3><a href="https://www.mysql.com/products/community/"><i class="ion-link"></i> MySQL</a></h3>
 				</div>
 			</div>
 			<div class="row">

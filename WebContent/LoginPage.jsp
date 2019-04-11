@@ -56,37 +56,3 @@
 	</body>
 		
 </html>
-
-
-
-
-
-
-
-		<!-- 
-		
-			FRONT END JUNK I CAN'T DELETE JUST YET
-		
-		<h3>Log In</h3>	
-		<form action="Servlet" method="post">
-			<input type="hidden" name="command" value="LOGIN">
-			<table>
-				<tbody>
-					<tr>
-						<td><label>Username:</label></td>
-						<td><input type="text" name="un"></td>
-					</tr>
-					<tr>
-						<td><label>Password:</label></td>
-						<td><input type="password" name="pw"></td>
-					</tr>
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Log In" class="save"></td>
-					</tr>
-				</tbody>
-			</table>	
-		</form>	
-		
-			
-	 -->

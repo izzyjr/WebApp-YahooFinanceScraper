@@ -83,36 +83,4 @@
 	</body>
 
 </html>
-
-
-
-
-
-
-
-
-<%--
-
-		Junk I can't delete just yet 
-
-		<div>
-		  <a href="${home}">Home</a>
-		  <a href="${about}">About</a>
-		  <a href="${cryptocurrencies}">Cryptocurrencies</a>
-		  <a href="${yourAccount}">${currentSessionUser.firstName}'s Account</a>
-		  <a href="${logout}">Log Out</a>
-		</div>
-		
-		<br>
-		<h3>Welcome ${currentSessionUser.firstName}!</h3> 
-		
-		
-		
-		
-		
-		--%>
-		
-		
-		
-		
 		
